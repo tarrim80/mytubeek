@@ -1,0 +1,21 @@
+<div class="container pb-3">
+    <div class="shadow  border border-secondary rounded">
+        <div class="card basic">
+            <a class="stretched-link btn"
+               href="{% url 'posts:profile' comment.author.username %}">
+                {% if comment.author.first_name or comment.author.last_name %}
+                    {{ comment.author.get_full_name }}
+                {% else %}
+                    {{ comment.author.get_username }}
+                {% endif %}
+                <br/>
+                {{ comment.created }}
+            </a>
+        </div>
+        <div class="media card bg-light">
+            <div class="media-body mx-4">
+                <p>{{ comment.text|safe }}</p>
+            </div>
+        </div>
+    </div>
+</div>

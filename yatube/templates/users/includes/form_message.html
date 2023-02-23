@@ -1,0 +1,15 @@
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-md-8 p-5">
+      <div class="card border border-secondary rounded shadow">
+        <div class="card-header basic">{{ form_header }}</div>
+        <div class="card-body">
+          <p>{{ form_body }}</p>
+          {% if form_href %}
+            <a href="{{ form_href }}">{{ form_href_text }}</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

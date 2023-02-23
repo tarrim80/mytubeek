@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Профайл пользователя {{ author.get_full_name }}
+{% endblock title %}
+
+{% block content %}
+  <div class="container pb-5">
+    <div class="md-5 pt-3 pb-1">
+      {% if my_posts_flag %}
+        <h1>Все мои посты</h1>
+      {% else %}
+        <h1>Все посты пользователя {{ author.get_full_name }}</h1>
+      {% endif %}
+      <h5 class="py-21">
+        Всего постов: {{ author.posts.count }}
+        <br/>
+        Подписчиков: {{ author.following.count }}
+      </h5>
+      {% if not my_posts_flag %}
+        {% if following %}
+          <a class="btn btn-lg btn-outline-secondary"
+             href="{% url 'posts:profile_unfollow' author.username %}"
+             role="button">
+            Отписаться
+          </a>
+        {% else %}
+          <a class="btn btn-lg btn-primary"
+             href="{% url 'posts:profile_follow' author.username %}"
+             role="button">
+            Подписаться
+          </a>
+        {% endif %}
+      {% endif %}
+    </div>
+
+    {% include 'posts/includes/paginator.html' %}
+
+    <article>
+      <div class="container">
+        {% for post in page_obj %}
+
+          {% include 'posts/includes/post_card.html' %}
+
+        {% endfor %}
+      </div>
+    </article>
+
+    {% include 'posts/includes/paginator.html' %}
+
+  </div>
+{% endblock content %}

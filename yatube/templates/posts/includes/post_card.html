@@ -1,0 +1,77 @@
+{% load thumbnail %}
+<div class="row shadow my-2">
+  <aside class="col-12 col-md-3 border border-secondary basic rounded">
+    <ul class="list-group list-group-flush basic">
+      <li class="list-group-item basic">
+        {{ post.created|date:"d E Y" }}
+      </li>
+      {% if not group %}
+        {% if post.group %}
+          <li class="list-group-item basic">
+            {{ post.group }}
+            <a class="post"
+               href="{% url 'posts:group_list' post.group.slug %}"><span class="btn btn-secondary badge count">{{ post.group_posts_count }}</span></a>
+          </li>
+        {% endif %}
+      {% endif %}
+      {% if not author and not posts_count or form %}
+        <li class="list-group-item basic">
+          {% if post.author.first_name or post.author.last_name %}
+            {{ post.author.get_full_name }}
+          {% else %}
+            {{ post.author.get_username }}
+          {% endif %}
+          <a class="post"
+             href="{% url 'posts:profile' post.author.username %}"><span class="btn btn-secondary badge count">{{ post.author_posts_count }}</span></a>
+        </li>
+      {% endif %}
+    </ul>
+  </aside>
+  <article class="p-0 col-12 col-md-9 border border-secondary rounded card">
+    <div class="p-2 card-body">
+      <div class="p-0 container-fluid">
+        {% if not form %}
+          {% thumbnail post.image "200" upscale=True as im %}
+          <img class="m-3 card border-0 float-start"
+               src="{{ im.url }}"
+               alt="Image"
+               height="{{ im.height }}"
+               width="{{ im.width }}"/>
+        {% endthumbnail %}
+        <div class="card border-0">
+          <p >{{ post.text|truncatewords:25|safe }}</p>
+          <p class="p-1">
+            <a class="m-3 float-end btn btn-primary border border-secondary shadow"
+               href="{% url 'posts:post_detail' post.id %}">
+              Читать
+            </a>
+          </p>
+        </div>
+      {% else %}
+        <div class="text-left">
+          {% thumbnail post.image "800x300" upscale=True as im %}
+          <img class="mx-4 card border-0 float-start"
+               src="{{ im.url }}"
+               alt="Image"
+               height="{{ im.height }}"
+               width="{{ im.width }}"/>
+        {% endthumbnail %}
+      </div>
+      <div class="px-5">
+        <p m-3>{{ post.text|safe }}</p>
+      </div>
+      {% if post.author == user %}
+        <div class="d-flex justify-content-end">
+          <div class="m-2">
+            <a class="btn btn-primary m-auto border border-secondary shadow"
+               href=" {% url 'posts:post_edit' post.id %} ">Pедактировать</a>
+            <a class="btn btn-danger m-auto border border-secondary shadow"
+               href=" {% url 'posts:post_delete' post.id %} ">Удалить</a>
+          </div>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+</div>
+</article>
+</div>
