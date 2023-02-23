@@ -38,7 +38,7 @@
                         {% if view_name == 'about:tech' %}
                           active
                         {% endif %}"
-                 href="{% url 'about:tech' %}">Технологии</a>
+                 href="{% url 'about:tech' '1' %}">Технологии</a>
             </li>
             {% if request.user.is_authenticated %}
               {% if request.user.is_superuser %}

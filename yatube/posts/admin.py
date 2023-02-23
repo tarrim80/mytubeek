@@ -40,7 +40,7 @@ class PostAdmin(admin.ModelAdmin):
     empty_value_display = '-пусто-'
 
     def format_text(self, obj):
-        return mark_safe(obj.text)
+        return format_field(self, obj.text)
 
     format_text.short_description = 'Текст'
 

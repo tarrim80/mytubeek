@@ -7,17 +7,21 @@
 {% block content %}
   <div class="container py-5">
     <div class="row">
-      <h1>Технологии</h1>
-      <aside class="col-12 col-md-3">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Python</li>
-          <li class="list-group-item">Django</li>
-        </ul>
-      </aside>
-      <article class="col-12 col-md-9 text-center w-70 h-100 p-5 mx-auto lead">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe cum itaque cumque excepturi et voluptas assumenda magni sit deleniti facilis, architecto ut, quis ad debitis nostrum consectetur voluptatibus, sequi quidem! Iure accusamus nulla voluptatibus blanditiis reprehenderit quas, natus aperiam rerum eius eligendi rem, odit itaque libero! Atque eveniet earum dolor. Sit, perspiciatis. Aliquid nisi molestiae, unde officiis accusamus voluptatem cupiditate veritatis odio eius amet doloremque quo, blanditiis a ipsam. Quos quia magni ea reprehenderit maxime! Itaque illo reprehenderit error voluptate tempora distinctio sapiente quibusdam. Libero aperiam natus eveniet suscipit. Ipsam dolores nulla ipsum aspernatur, error magni maiores sit earum ducimus!
-        </p>
+      <h1>Стек технологий</h1>
+
+      {% include 'about/includes/tech_sidebar.html' %}
+
+      <article class="col-12 col-md-9 p-5 mx-auto lead">
+        <div class="container p-5 bg-light card border shadow">
+          {% with request.resolver_match.captured_kwargs.number as number %}
+            {% for obj in object_list %}
+              {% if obj.number == number %}
+                <h4 class="text-center">{{ obj.title }}</h4>
+                <p>{{ obj.description|safe }}</p>
+              {% endif %}
+            {% endfor %}
+          {% endwith %}
+        </div>
       </article>
     </div>
   </div>
