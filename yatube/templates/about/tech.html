@@ -12,7 +12,7 @@
       {% include 'about/includes/tech_sidebar.html' %}
 
       <article class="col-12 col-md-9 p-5 mx-auto lead">
-        <div class="container p-5 bg-light card border shadow">
+        <div class="container p-5 bg-light card card-body border shadow">
           {% with request.resolver_match.captured_kwargs.number as number %}
             {% for obj in object_list %}
               {% if obj.number == number %}

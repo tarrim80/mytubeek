@@ -11,7 +11,7 @@ class AboutURLTests(TestCase):
         """Страница доступна любому пользователю."""
         url_names = {
             'author': '/about/author/',
-            'tech': '/about/tech/'
+            'tech': '/about/tech/1/'
         }
         for url_name, address in url_names.items():
             with self.subTest(url_name=url_name):

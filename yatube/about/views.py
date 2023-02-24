@@ -1,10 +1,10 @@
-from django.views.generic.base import TemplateView
-from django.views.generic import ListView
+from django.views.generic import DetailView, ListView
 
-from about.models import Tech
+from about.models import About, Tech
 
 
-class AboutAuthorView(TemplateView):
+class AboutAuthorView(DetailView):
+    model = About
     template_name = "about/author.html"
 
 

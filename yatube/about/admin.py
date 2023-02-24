@@ -1,10 +1,9 @@
 from django import forms
 from django.contrib import admin
-from django.utils.safestring import mark_safe
 
 from ckeditor.widgets import CKEditorWidget
 
-from about.models import Tech
+from about.models import Tech, About
 
 
 class TechAdminForm(forms.ModelForm):
@@ -20,10 +19,19 @@ class TechAdmin(admin.ModelAdmin):
     form = TechAdminForm
     empty_value_display = '-пусто-'
 
-    def description(self, obj):
-        return mark_safe(self, obj.description)
 
-    description.short_description = 'Описание'
+class AboutAdminForm(forms.ModelForm):
+    description = forms.CharField(
+        label='Описание', widget=CKEditorWidget(
+            config_name='ckeditor_post'
+        ))
+
+
+class AboutAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user',)
+    form = AboutAdminForm
+    empty_value_display = '-пусто-'
 
 
 admin.site.register(Tech, TechAdmin)
+admin.site.register(About, AboutAdmin)
