@@ -41,7 +41,7 @@
                  href="{% url 'about:tech' '1' %}">Технологии</a>
             </li>
             {% if request.user.is_authenticated %}
-              {% if request.user.is_superuser %}
+              {% if request.user.is_staff %}
                 <li class="nav-item">
                   <a class="nav-link
                             {% if view_name == '' %}
