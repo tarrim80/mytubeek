@@ -13,7 +13,7 @@
         <ul class="list-group list-group-flush basic">
           <li class="list-group-item basic">
             {% thumbnail object.photo "200" upscale=True as im %}
-            <img class="m-3 card border-0 float-start"
+            <img class="my-3 mx-auto img-fluid card border-0"
                  src="{{ im.url }}"
                  alt="Image"
                  height="{{ im.height }}"

@@ -11,6 +11,7 @@
 
     {% include 'posts/includes/post_card.html' with post_detail=True %}
 
+    <div class="pb-5"></div>
     {% load user_filters %}
     {% if post.comments.exists %}
       <p>

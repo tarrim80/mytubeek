@@ -50,14 +50,14 @@
       {% else %}
         <div class="text-left">
           {% thumbnail post.image "800x300" upscale=True as im %}
-          <img class="mx-4 card border-0 float-start"
+          <img class="m-auto img-fluid card border-0 float-start"
                src="{{ im.url }}"
                alt="Image"
                height="{{ im.height }}"
                width="{{ im.width }}"/>
         {% endthumbnail %}
       </div>
-      <div class="px-5">
+      <div class="px-3 col-12 col-sm-12 col-md-12 col-lg-4 col-xl-5 col-xxl-6 d-grid">
         <p m-3>{{ post.text|safe }}</p>
       </div>
       {% if post.author == user %}
