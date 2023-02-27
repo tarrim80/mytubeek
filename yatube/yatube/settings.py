@@ -185,6 +185,7 @@ CKEDITOR_CONFIGS = {
         'toolbar': 'Custom',
         'height': 100,
         'width': '100%',
+        'editorplaceholder': 'Введите текст сообщения не более 5000 знаков...',
         'toolbar_Custom': [
             {'name': 'styles', 'items': [
                  'Styles', 'Format', 'Font', 'FontSize']},
@@ -203,17 +204,19 @@ CKEDITOR_CONFIGS = {
                          'SpecialChar',
                      ]},
             {'name': 'plugins',
-             'items': ['youtube',]},
+             'items': ['Youtube',]},
             ['RemoveFormat'], ['Source'],
         ],
         'extraPlugins': [
             'youtube',
             'editorplaceholder',
-        ], },
+        ],
+    },
     'ckeditor_comment': {
         'toolbar': 'Custom',
         'height': 60,
         'width': '100%',
+        'editorplaceholder': 'Введите текст комментария...',
         'toolbar_Custom': [
             {'name': 'styles', 'items': [
                  'Styles', 'Format', 'Font', 'FontSize']},
@@ -237,7 +240,7 @@ CKEDITOR_CONFIGS = {
     'default': {
         # 'skin': 'moono',
         # 'skin': 'office2013',
-
+        'editorplaceholder': 'Введите текст сообщения не более 5000 знаков...',
         'toolbar_Basic': [
             ['Source', '-', 'Bold', 'Italic']
         ],
@@ -272,11 +275,11 @@ CKEDITOR_CONFIGS = {
                 # put the name of your editor.ui.addButton here
                 'Preview',
                 'Maximize',
-                'youtube',
+                'Youtube',
 
             ]},
         ],
-        # 'toolbar': 'YourCustomToolbarConfig',  # put selected toolbar config here
+        'toolbar': 'YourCustomToolbarConfig',  # put selected toolbar config here
         # 'toolbar': 'Basic',  # put selected toolbar config here
         # 'toolbarGroups': [{ 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] }],
         'height': 291,
@@ -302,7 +305,7 @@ CKEDITOR_CONFIGS = {
             'dialogui',
             'elementspath',
             'editorplaceholder',
-            'youtube'
+            'youtube',
         ]),
     }
 }
